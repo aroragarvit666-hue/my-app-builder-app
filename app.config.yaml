@@ -1,0 +1,37 @@
+application:
+  actions: actions
+  web: web-src
+  runtimeManifest:
+    packages:
+      image-vault:
+        license: Apache-2.0
+        actions:
+          upload-image:
+            function: actions/upload-image/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: true
+              final: true
+            limits:
+              timeout: 120000
+          list-images:
+            function: actions/list-images/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: true
+              final: true
+          delete-image:
+            function: actions/delete-image/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: true
+              final: true
